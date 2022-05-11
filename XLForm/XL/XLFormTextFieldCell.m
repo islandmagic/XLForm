@@ -157,6 +157,11 @@ NSString *const XLFormTextFieldMaxNumberOfCharacters = @"textFieldMaxNumberOfCha
         self.textField.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
         self.textField.keyboardType = UIKeyboardTypeDefault;
     }
+    else if ([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeCallsign]){
+        self.textField.keyboardType = UIKeyboardTypeASCIICapable;
+        self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.textField.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+    }
 
     self.textLabel.text = ((self.rowDescriptor.required && self.rowDescriptor.title && self.rowDescriptor.sectionDescriptor.formDescriptor.addAsteriskToRequiredRowsTitle) ? [NSString stringWithFormat:@"%@*", self.rowDescriptor.title] : self.rowDescriptor.title);
 

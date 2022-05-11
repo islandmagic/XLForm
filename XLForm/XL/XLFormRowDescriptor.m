@@ -547,8 +547,10 @@ NSString * const XLHidePredicateCacheKey = @"hidePredicateCache";
 - (BOOL)valueIsEmpty
 {
     return self.value == nil || [self.value isKindOfClass:[NSNull class]] ||
-        ([self.value respondsToSelector:@selector(length)] && [self.value length] == 0) ||
-        ([self.value respondsToSelector:@selector(count)] && [self.value count] == 0);
+        ([self.value respondsToSelector:@selector(length)] && [self.value length] == 0); 
+        // Count does not play well with RubyMotion String
+        //||
+//        ([self.value respondsToSelector:@selector(count)] && [self.value count] == 0);
 }
 
 -(XLFormValidationStatus *)doValidation
