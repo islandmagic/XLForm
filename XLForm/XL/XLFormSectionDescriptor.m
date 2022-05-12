@@ -418,13 +418,13 @@ NSString * const XLFormRowsKey = @"formRows";
     return _hidden;
 }
 
--(void)setHidden:(id)hidden
+-(void)setHiddenWithPredicate:(NSPredicate *)hidden
 {
     if ([_hidden isKindOfClass:[NSPredicate class]]) {
         [self.formDescriptor removeObserversOfObject:self predicateType:XLPredicateTypeHidden];
     }
     
-    _hidden = [hidden isKindOfClass:[NSString class]] ? [hidden formPredicate] : hidden;
+    _hidden = hidden;
     if ([_hidden isKindOfClass:[NSPredicate class]]) {
         [self.formDescriptor addObserversOfObject:self predicateType:XLPredicateTypeHidden];
     }

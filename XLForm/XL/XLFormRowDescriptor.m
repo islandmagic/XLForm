@@ -502,13 +502,13 @@ NSString * const XLHidePredicateCacheKey = @"hidePredicateCache";
 }
 
 
--(void)setHidden:(id)hidden
+-(void)setHiddenWithPredicate:(NSPredicate *)hidden
 {
     if ([_hidden isKindOfClass:[NSPredicate class]]){
         [self.sectionDescriptor.formDescriptor removeObserversOfObject:self predicateType:XLPredicateTypeHidden];
     }
     
-    _hidden = [hidden isKindOfClass:[NSString class]] ? [hidden formPredicate] : hidden;
+    _hidden = hidden;
     if ([_hidden isKindOfClass:[NSPredicate class]]){
         [self.sectionDescriptor.formDescriptor addObserversOfObject:self predicateType:XLPredicateTypeHidden];
     }
